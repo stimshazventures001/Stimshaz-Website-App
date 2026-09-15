@@ -4,90 +4,232 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stimshaz Web Designers | Premium Cloud Architectures</title>
-    <!-- Tailwind CSS for modern style delivery -->
-    <script src="https://jsdelivr.net"></script>
+    <!-- Hardcoded Native CSS to bypass Safari script blocking -->
     <style>
-        body { background-color: #0b0f19; color: #f3f4f6; font-family: sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #0b0f19; 
+            color: #f3f4f6; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        nav {
+            border-bottom: 1px solid #1f2937;
+            background-color: rgba(15, 23, 42, 0.9);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 50;
+        }
+        .brand {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #34d399;
+        }
+        .nav-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #34d399; }
+        main {
+            flex-grow: 1;
+            padding-top: 140px;
+            padding-left: 24px;
+            padding-right: 24px;
+            max-w: 1000px;
+            margin: 0 auto;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #34d399, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-p {
+            margin: 24px auto 0 auto;
+            color: #9ca3af;
+            max-width: 600px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .cta-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 14px 32px;
+            background: linear-gradient(to right, #10b981, #06b6d4);
+            color: #050b14;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
+            transition: opacity 0.2s;
+        }
+        .cta-btn:hover { opacity: 0.9; }
+        .services-grid {
+            margin-top: 80px;
+            display: grid;
+            grid-template-cols: 1fr;
+            gap: 24px;
+            text-align: left;
+        }
+        @media (min-width: 768px) {
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
+            h1 { font-size: 56px; }
+        }
+        .card {
+            padding: 24px;
+            background-color: rgba(17, 24, 39, 0.5);
+            border: 1px solid rgba(31, 41, 55, 0.6);
+            border-radius: 16px;
+        }
+        .card-icon {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+        .card p { font-size: 14px; color: #9ca3af; line-height: 1.6; }
+        .form-section {
+            margin: 80px auto 80px auto;
+            max-width: 500px;
+            background-color: #0f172a;
+            border: 1px solid #1f2937;
+            border-radius: 24px;
+            padding: 32px;
+            text-align: left;
+        }
+        .form-section h2 { font-size: 24px; font-weight: 700; color: #fff; }
+        .form-section p { font-size: 14px; color: #9ca3af; margin-top: 4px; }
+        .form-group { margin-top: 20px; }
+        .form-group label { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #9ca3af; letter-spacing: 1px; }
+        .form-group input, .form-group textarea {
+            margin-top: 6px;
+            width: 100%;
+            background-color: #050b14;
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            color: #fff;
+            outline: none;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: #10b981; }
+        .submit-btn {
+            margin-top: 24px;
+            width: 100%;
+            padding: 14px;
+            background-color: #f3f4f6;
+            color: #0f172a;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .submit-btn:hover { background-color: #fff; }
+        #statusMsg { text-align: center; font-size: 14px; margin-top: 16px; display: none; color: #34d399; }
+        footer {
+            border-top: 1px solid #111827;
+            background-color: rgba(15, 23, 42, 0.2);
+            padding: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: #4b5563;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body>
 
     <!-- Premium Navigation Bar -->
-    <nav class="border-b border-gray-800 bg-gray-950/50 backdrop-blur px-6 py-4 flex justify-between items-center fixed top-0 left-0 right-0 z-50">
-        <div class="text-xl font-bold tracking-wider text-emerald-400">STIMSHAZ</div>
-        <div class="space-x-6 hidden md:flex text-sm text-gray-400">
-            <a href="#services" class="hover:text-emerald-400 transition">Services</a>
-            <a href="#about" class="hover:text-emerald-400 transition">Infrastructure</a>
-            <a href="#contact" class="hover:text-emerald-400 transition">Inquire</a>
+    <nav>
+        <div class="brand">STIMSHAZ</div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#contact">Inquire</a>
         </div>
     </nav>
 
     <!-- Luxury Hero Engine -->
-    <main class="flex-grow pt-28 px-6 max-w-5xl mx-auto w-full flex flex-col justify-center items-center text-center">
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight max-w-3xl leading-tight">
-            We Build Fast, Secure Web Platforms for <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Elite Kenyan Brands</span>
-        </h1>
-        <p class="mt-6 text-gray-400 max-w-xl text-base md:text-lg">
-            High-performance web architecture powered by Google AI execution and distributed global CDNs. Absolute scaling with zero overhead.
-        </p>
-        <div class="mt-10">
-            <a href="#contact" class="px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-lg text-sm font-semibold text-gray-950 shadow-lg shadow-emerald-500/20 hover:opacity-90 transition">
-                Book a Strategy Consultation
-            </a>
+    <main>
+        <h1>We Build Fast, Secure Web Platforms for <span class="gradient-text">Elite Kenyan Brands</span></h1>
+        <p class="hero-p">Elevate your digital presence with hyper-modern, performance-driven web experiences engineered for scale and conversion.</p>
+        <div>
+            <a href="#contact" class="cta-btn">Book a Strategy Consultation</a>
         </div>
 
         <!-- Services Grid -->
-        <section id="services" class="mt-24 w-full grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-            <div class="p-6 bg-gray-900/40 rounded-xl border border-gray-800/80">
-                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 font-bold">💻</div>
-                <h3 class="text-lg font-bold">Custom Web Design</h3>
-                <p class="mt-2 text-sm text-gray-400 leading-relaxed">Stunning, bespoke interactive design optimized precisely for premium client conversion metrics.</p>
+        <div class="services-grid" id="services">
+            <div class="card">
+                <div class="card-icon">💻</div>
+                <h3>Web Design</h3>
+                <p>Bespoke, visually striking interfaces that captivate audiences and drive engagement.</p>
             </div>
-            <div class="p-6 bg-gray-900/40 rounded-xl border border-gray-800/80">
-                <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-4 font-bold">⚡</div>
-                <h3 class="text-lg font-bold">Serverless Deployments</h3>
-                <p class="mt-2 text-sm text-gray-400 leading-relaxed">Hyper-fast enterprise hosting models utilizing cloud computing edge endpoints globally.</p>
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Web App Development</h3>
+                <p>Robust, full-stack web applications built on modern frameworks for speed and scale.</p>
             </div>
-            <div class="p-6 bg-gray-900/40 rounded-xl border border-gray-800/80">
-                <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4 font-bold">🤖</div>
-                <h3 class="text-lg font-bold">AI Integrations</h3>
-                <p class="mt-2 text-sm text-gray-400 leading-relaxed">Embedding natural intelligence frameworks seamlessly straight into automated workspace flows.</p>
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3>Cloud Architecture</h3>
+                <p>Enterprise-grade cloud infrastructure utilizing modern deployment pipelines.</p>
             </div>
-        </section>
+        </div>
 
-        <!-- Dynamic Lead Capture Form -->
-        <section id="contact" class="mt-24 w-full max-w-xl bg-gray-950 border border-gray-800 rounded-2xl p-8 mb-16 text-left">
-            <h2 class="text-2xl font-bold tracking-tight">Initiate a Project</h2>
-            <p class="text-sm text-gray-400 mt-1">Brief our execution team regarding your development scopes.</p>
+        <!-- Lead Capture Form -->
+        <div class="form-section" id="contact">
+            <h2>Start a Project</h2>
+            <p>Brief our execution team regarding your development scopes.</p>
             
-            <form id="leadForm" class="mt-6 space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold uppercase text-gray-400 tracking-wider">Business Identity</label>
-                    <input type="text" id="bizName" required class="mt-1 w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 text-white" placeholder="e.g., Kilimani Premium Medical">
+            <form id="leadForm">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="bizName" required placeholder="e.g., John Doe">
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold uppercase text-gray-400 tracking-wider">Communication Line</label>
-                    <input type="email" id="bizEmail" required class="mt-1 w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 text-white" placeholder="name@company.co.ke">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="bizEmail" required placeholder="name@company.co.ke">
                 </div>
-                <button type="submit" class="w-full py-3 bg-gray-100 text-gray-950 font-semibold rounded-lg text-sm hover:bg-gray-200 transition mt-2">
-                    Submit Development Briefing
-                </button>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="bizMessage" rows="4" required placeholder="Tell us briefly about your project scope..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Inquiry</button>
             </form>
-            <div id="statusMsg" class="mt-4 text-center text-xs font-medium hidden"></div>
-        </section>
+            <div id="statusMsg"></div>
+        </div>
     </main>
 
-    <!-- Global Footer -->
-    <footer class="w-full border-t border-gray-900 bg-gray-950/20 py-6 text-center text-xs text-gray-500">
+    <footer>
         &copy; 2026 Stimshaz Web Designers. Nairobi, Kenya. Serverless Core Architecture.
     </footer>
 
-    <!-- Modular Browser-level Firebase Cloud Engine Integration -->
+    <!-- Firebase Connection Engine -->
     <script type="module">
         import { initializeApp } from "https://gstatic.com";
         import { getAnalytics } from "https://gstatic.com";
 
-        // Verified Stimshaz Account Credentials
         const firebaseConfig = {
             apiKey: "AIzaSyDTsvf-VG3Ci933oaLcU1FWFWoNYF7dk7Y",
             authDomain: "://firebaseapp.com",
@@ -98,16 +240,14 @@
             measurementId: "G-DJ8YJE4MPS"
         };
 
-        // Fire initialization sequence
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
 
-        // Standard interceptor for front-end form verification testing
         document.getElementById('leadForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const msgBox = document.getElementById('statusMsg');
             msgBox.textContent = "Pipeline operational! Submission intercept captured successfully.";
-            msgBox.className = "mt-4 text-center text-xs font-medium text-emerald-400 block";
+            msgBox.style.display = "block";
             document.getElementById('leadForm').reset();
         });
     </script>
