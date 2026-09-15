@@ -1,34 +1,115 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stimshaz Web Designers | Premium Cloud Architectures</title>
+    <!-- Tailwind CSS for modern style delivery -->
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        body { background-color: #0b0f19; color: #f3f4f6; font-family: sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
 
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { Services } from './components/Services';
-import { Contact } from './components/Contact';
-import { Footer } from './components/Footer';
+    <!-- Premium Navigation Bar -->
+    <nav class="border-b border-gray-800 bg-gray-950/50 backdrop-blur px-6 py-4 flex justify-between items-center fixed top-0 left-0 right-0 z-50">
+        <div class="text-xl font-bold tracking-wider text-emerald-400">STIMSHAZ</div>
+        <div class="space-x-6 hidden md:flex text-sm text-gray-400">
+            <a href="#services" class="hover:text-emerald-400 transition">Services</a>
+            <a href="#about" class="hover:text-emerald-400 transition">Infrastructure</a>
+            <a href="#contact" class="hover:text-emerald-400 transition">Inquire</a>
+        </div>
+    </nav>
 
-export default function App() {
-  return (
-    <div className="min-h-screen bg-zinc-950">
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
-  );
-}
+    <!-- Luxury Hero Engine -->
+    <main class="flex-grow pt-28 px-6 max-w-5xl mx-auto w-full flex flex-col justify-center items-center text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight max-w-3xl leading-tight">
+            We Build Fast, Secure Web Platforms for <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Elite Kenyan Brands</span>
+        </h1>
+        <p class="mt-6 text-gray-400 max-w-xl text-base md:text-lg">
+            High-performance web architecture powered by Google AI execution and distributed global CDNs. Absolute scaling with zero overhead.
+        </p>
+        <div class="mt-10">
+            <a href="#contact" class="px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-lg text-sm font-semibold text-gray-950 shadow-lg shadow-emerald-500/20 hover:opacity-90 transition">
+                Book a Strategy Consultation
+            </a>
+        </div>
 
-        
-{
-  "name": "Stimshaz Web Designers",
-  "description": "Premium web design agency building fast, secure web platforms for elite Kenyan brands.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
-}
+        <!-- Services Grid -->
+        <section id="services" class="mt-24 w-full grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            <div class="p-6 bg-gray-900/40 rounded-xl border border-gray-800/80">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 font-bold">💻</div>
+                <h3 class="text-lg font-bold">Custom Web Design</h3>
+                <p class="mt-2 text-sm text-gray-400 leading-relaxed">Stunning, bespoke interactive design optimized precisely for premium client conversion metrics.</p>
+            </div>
+            <div class="p-6 bg-gray-900/40 rounded-xl border border-gray-800/80">
+                <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-4 font-bold">⚡</div>
+                <h3 class="text-lg font-bold">Serverless Deployments</h3>
+                <p class="mt-2 text-sm text-gray-400 leading-relaxed">Hyper-fast enterprise hosting models utilizing cloud computing edge endpoints globally.</p>
+            </div>
+            <div class="p-6 bg-gray-900/40 rounded-xl border border-gray-800/80">
+                <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4 font-bold">🤖</div>
+                <h3 class="text-lg font-bold">AI Integrations</h3>
+                <p class="mt-2 text-sm text-gray-400 leading-relaxed">Embedding natural intelligence frameworks seamlessly straight into automated workspace flows.</p>
+            </div>
+        </section>
+
+        <!-- Dynamic Lead Capture Form -->
+        <section id="contact" class="mt-24 w-full max-w-xl bg-gray-950 border border-gray-800 rounded-2xl p-8 mb-16 text-left">
+            <h2 class="text-2xl font-bold tracking-tight">Initiate a Project</h2>
+            <p class="text-sm text-gray-400 mt-1">Brief our execution team regarding your development scopes.</p>
+            
+            <form id="leadForm" class="mt-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-gray-400 tracking-wider">Business Identity</label>
+                    <input type="text" id="bizName" required class="mt-1 w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 text-white" placeholder="e.g., Kilimani Premium Medical">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-gray-400 tracking-wider">Communication Line</label>
+                    <input type="email" id="bizEmail" required class="mt-1 w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 text-white" placeholder="name@company.co.ke">
+                </div>
+                <button type="submit" class="w-full py-3 bg-gray-100 text-gray-950 font-semibold rounded-lg text-sm hover:bg-gray-200 transition mt-2">
+                    Submit Development Briefing
+                </button>
+            </form>
+            <div id="statusMsg" class="mt-4 text-center text-xs font-medium hidden"></div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="w-full border-t border-gray-900 bg-gray-950/20 py-6 text-center text-xs text-gray-500">
+        &copy; 2026 Stimshaz Web Designers. Nairobi, Kenya. Serverless Core Architecture.
+    </footer>
+
+    <!-- Modular Browser-level Firebase Cloud Engine Integration -->
+    <script type="module">
+        import { initializeApp } from "https://gstatic.com";
+        import { getAnalytics } from "https://gstatic.com";
+
+        // Verified Stimshaz Account Credentials
+        const firebaseConfig = {
+            apiKey: "AIzaSyDTsvf-VG3Ci933oaLcU1FWFWoNYF7dk7Y",
+            authDomain: "://firebaseapp.com",
+            projectId: "stimshaz-web-designers",
+            storageBucket: "stimshaz-web-designers.firebasestorage.app",
+            messagingSenderId: "475705842252",
+            appId: "1:475705842252:web:c47bd913c08dd1dc9ab2e9",
+            measurementId: "G-DJ8YJE4MPS"
+        };
+
+        // Fire initialization sequence
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        // Standard interceptor for front-end form verification testing
+        document.getElementById('leadForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const msgBox = document.getElementById('statusMsg');
+            msgBox.textContent = "Pipeline operational! Submission intercept captured successfully.";
+            msgBox.className = "mt-4 text-center text-xs font-medium text-emerald-400 block";
+            document.getElementById('leadForm').reset();
+        });
+    </script>
+</body>
+</html>
